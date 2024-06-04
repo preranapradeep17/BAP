@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CLOSET CALC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Joan&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+            font-family: 'Joan', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: #adadad;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .5rem 1rem;
+            background-color: #cda33f;
+            border-radius: 2rem;
+            color: #1e1f26;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background-color: #92601f;
+        }
+
+        .btn-l {
+            width: 100%;
+            text-align: center;
+        }
+
+        body {
+            background-color: #1e1f26;
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-content: space-evenly;
+        }
+
+        /* top bar */
+
+        .top-bar {
+            width: 100%;
+        }
+
+        .left-content, .right-content {
+            display: flex;
+            margin-left: 1rem; /* Adjusted margin-left */
+        }
+
+        .title {
+            margin-right: 3rem;
+            color: #cd8c38;
+        }
+
+        .navigation {
+            display: flex;
+            list-style: none;
+        }
+
+        .navigation li {
+            margin-right: 1rem;
+        }
+
+        .navigation li a:hover {
+            color: #cd8c38;
+        }
+
+        .active {
+            color: #cd8c38;
+        }
+
+        .filter,
+        .cart,
+        .help,
+        .menu {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .filter,
+        .cart,
+        .help {
+            margin-right: 1rem;
+        }
+
+        .menu {
+            margin-left: .8rem;
+        }
+
+        .filter,
+        .menu {
+            display: none;
+        }
+
+        .profile-img-box {
+            position: relative;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            top: auto;
+            left: 0%;
+            width: 97%;
+            height: 98%;
+            object-fit: cover;
+        }
+        /* main container */
+
+        .main-container {
+            color: #adadad;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+        }
+
+        /* dress container */
+
+        .upcoming-img-box {
+            position: relative;
+            height: 1200px;
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .upcoming-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background-color: #1e1f26;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    border: 2px solid #cd8c38;
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: floatTitle 4s infinite ease-in-out;
+}
+
+@keyframes floatTitle {
+    0%, 100% { transform: translate(-50%, -50%) translateY(-20px); }
+    50% { transform: translate(-50%, -50%) translateY(20px); }
+}
+
+
+
+        .buttons {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+        }
+
+        .btn-alt {
+            background-color: #1e1f26;
+            color: #cd8c38;
+            border: 1px solid #cd8c38;
+            margin-left: 1rem;
+        }
+
+        .btn-alt:hover {
+            color: #1e1f26;
+            background-color: #cd8c38;
+        }
+
+        /* current movies */
+
+        .movies-container {
+            padding-bottom: 2rem;
+        }
+
+        .current-movies {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2.5rem;
+        }
+
+        .current-movie {
+            background: linear-gradient(45deg, rgba(255, 255, 255, .05), rgba(205, 140, 56, .15));
+            padding: 10px;
+            height: 108%;
+        }
+
+        .cm-img-box {
+            position: relative;
+            height: 400px;
+            width: 250px; /* Adjusted width here */
+            margin-bottom: 1rem;
+            border-radius: .5rem;
+            overflow: hidden;
+            background-size: contain;
+        }
+
+        .movie-title {
+            color: #fff;
+            margin-bottom: .2rem;
+        }
+
+        .booking {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .price {
+            color: #cd8c38;
+        }
+        .footer{
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+            color: #fff;
+          }
+      
+          .navigation {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+          }
+      
+          .navigation li {
+            margin-right: 10px;
+          }
+      
+          .navigation li:last-child {
+            margin-right: 0;
+          }
+      
+          .button-shape {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-left: auto; /* Aligns the button to the right */
+            border-radius: 5px; /* Applies border-radius for button shape */
+          }
+      
+          .button-shape:hover {
+            background-color: #45a049;
+            cursor: pointer;
+          }
+    </style>
+</head>
+
+<body>
+    <section class="top-bar">
+        <div class="left-content">
+            <h2 class="title">YOUR PERFECT FASHION DESTINATION !</h2>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><form action="/add_to_cart" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="dress_name" value="Green_gown">
+                    <input type="hidden" name="price" value="200">
+                    <button type="submit" class="btn">Add to cart</button>
+                </form></li>
+            </ul>
+        </div>
+        <a href="{{ url_for('login_form') }}" class="button-shape">Log-Out</a>
+    </section>
+    <section class="main-container">
+
+        <div class="movies-container">
+            <div class="upcoming-img-box">
+                <img src="{{ url_for('static', filename='images/product00.jpeg') }}" alt="">
+                <p class="upcoming-title">CLOSET CALC</p>
+            </div>
+            <div class="current-movies">
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product1.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Asymmetric Satin Dress</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product2.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Women's Tie-Dye Dresses</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product3.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Metallic T-Shirt</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product4.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Floral Print Long Sleeve Blouse</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product5.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Gray Slim Fit Suit trousers</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product6.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Beige Slim Fit Suit trousers</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product7.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Floral Embroidery Shirt</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product8.jpg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Contrast Print T-Shirt</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product9.jpeg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Yellow Loose Fit Hoodie</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+                <div class="current-movie">
+                    <div class="cm-img-box">
+                        <img src="{{ url_for('static', filename='images/product10.jpeg') }}" alt="">
+                    </div>
+                    <h3 class="movie-title">Mid-Rise Trf Cargo Jeans</h3>
+                    <p class="screen-name">Cost : $400</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+<hr>
+<footer>
+    <div class="footer">
+    <h4 style="color:Yellow;font-weight:bold;text-align:center">&#169 All rights reserved to this company.</h4>
+    </div>
+</footer>
+</html>
